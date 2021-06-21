@@ -6,6 +6,7 @@ import fs from "fs";
 import ssr from "./routes/ssr";
 import GHCard from "./routes/GHCard";
 import StarGame from "./routes/StarGame";
+import PrimeReact from "./routes/PrimeReact"
 
 //
 //https://www.npmjs.com/package/express-session#options
@@ -13,7 +14,7 @@ import StarGame from "./routes/StarGame";
 const app = express();
 
 //Used by cloud provided to trust first level proxy
-app.set("trus proxy", 1);
+app.set("trust proxy", 1);
 app.use(compression()); //use compression to serve static content
 app.use(express.static("public")); //serves static content from the public folder
 //https://expressjs.com/en/api.html#express.json
@@ -22,6 +23,7 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(redisSession);
 
+app.use("/", PrimeReact);
 app.use("/firstssr", ssr);
 app.use("/ghCard", GHCard);
 app.use("/starGame", StarGame);

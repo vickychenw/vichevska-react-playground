@@ -8,6 +8,7 @@ const config = {
     ghCard: ["./src/components/widgets/GHCard/hydrate.js"],
     checkSession: ["./src/components/widgets/FirstSSR/checkSessionHydrate.js"],
     starGame: ["./src/components/widgets/StarMatch/hydrate.js"],
+    primeReact: ["./src/components/widgets/PrimeReact/hydrate.js"],
   },
   output: {
     path: path.resolve(__dirname, "public"),

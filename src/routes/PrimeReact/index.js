@@ -1,7 +1,5 @@
 import express from "express";
-import GHCard from "../../components/widgets/GHCard";
-
-import { DataTable } from 'primereact/datatable';
+import DataTableDemo from "../../components/widgets/PrimeReact";
 
 import React from "react";
 import { renderToString } from "react-dom/server";
@@ -11,19 +9,19 @@ const router = express.Router();
 router.get("/", async (req, res) => {
   const theHtml = `
     <html>
-        <head><title>GH Cards</title></head>
+        <head><title>React Prime DataTable Demo</title></head>
            <body>
             <h1></h1>
-            <div id="cardsComp">{{{cardsComp}}}</div>
-            <script src="/ghCard.js" charset="utf-8"></script>
+            <div id="datatableComp">{{{datatableComp}}}</div>
+            <script src="/primeReact.js" charset="utf-8"></script>
             <script src="/vendor.js" charset="utf-8"></script>            
         </body>
     </html>
     `;
 
   const hbsTemplate = hbs.compile(theHtml);
-  const reactComp = renderToString(<GHCard />);
-  const htmlToSend = hbsTemplate({ cardsComp: reactComp });
+  const reactComp = renderToString(<DataTableDemo />);
+  const htmlToSend = hbsTemplate({ datatableComp: reactComp });
 
   res.send(htmlToSend);
 });
